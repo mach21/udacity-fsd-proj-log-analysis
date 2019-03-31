@@ -19,7 +19,7 @@ class LogAnalyzerResource(object):
                 return self
 
             def __exit__(self, exc_type, exc_value, traceback):
-                self.__close_db_conn()
+                self._close_db_conn()
 
             def __get_db_conn(self):
                 '''
