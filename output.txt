@@ -6,13 +6,14 @@ The 3 most popular articles of all time are:
 "Bears love berries, alleges bear" - 253801 views
 "Bad things gone, say good people" - 170098 views
 
-*******************************************
-The 3 most popular authors of all time are:
-*******************************************
+*****************************************
+The most popular authors of all time are:
+*****************************************
 
 "Ursula La Multa" - 507594 views
 "Rudolf von Treppenwitz" - 423457 views
 "Anonymous Contributor" - 170098 views
+"Markoff Chaney" - 84557 views
 
 *************
 Bad days are:

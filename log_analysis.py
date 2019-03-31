@@ -129,9 +129,9 @@ class LogAnalyzerResource(object):
                     '''
                 )
 
-            def __get_3_most_popular_authors(self):
+            def __get_most_popular_authors(self):
                 '''
-                Fetch the 3 most popular authors from the db.
+                Fetch the most popular authors from the db.
 
                 :returns: list of (article, views) tuples
                 '''
@@ -158,7 +158,6 @@ class LogAnalyzerResource(object):
                             ) AS subs2
                         JOIN authors ON subs2.author = authors.id
                         ORDER BY sum DESC
-                        LIMIT 3
                         ;
                     '''
                 )
@@ -246,13 +245,13 @@ class LogAnalyzerResource(object):
                 :returns: None
                 :raises Exception: when there is no data to parse
                 '''
-                authors = self.__get_3_most_popular_authors()
+                authors = self.__get_most_popular_authors()
 
                 if authors == [] or authors is None:
                     raise Exception('No author data to display!')
 
                 print(self.__format_message(
-                    'The 3 most popular authors of all time are:')
+                    'The most popular authors of all time are:')
                 )
                 for item in authors:
                     print(
