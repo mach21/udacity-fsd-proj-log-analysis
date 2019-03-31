@@ -15,6 +15,7 @@ pip3 install -r requirements.txt
 ````
 
 The _news_ PostgreSQL database needs to be installed and populated.
+
 Please refer to _Project: Logs Analysis -> Section 3 (Prepare the software and data)_ for instructions.
 
 ## How to run
@@ -26,16 +27,20 @@ user@host:~$ python3 log_analysis.py
 
 ## Design
 The *LogAnalyzer* class establishes a DB connection and obtains a cursor on instantiation. The connection and cursor are (re)used for all the queries this program executes.
+
 There is a *__db_exec_and_fetchall(query)* convenience method that simplifies running queries and fetching results. Individual methods for fetching relevant data for the questions that need to be answered make use of it: *__get_3_most_popular_articles()*, *__get_most_popular_authors()*, *__get_bad_days()*
+
 Note that these internal workings are not intended for public access, thus the name mangling.
+
 Answers are printed to STDOUT via public methods: *print_popular_article_data()*, *print_popular_author_data()*, *print_bad_days_data()*
+
 To avoid the possibility of forgetting to close DB connections, The *LogAnalyzer* class is hidden inside a *LogAnalyzerResource*, which only provides useful functionality when instantiated via context manager, like this:
 
 ````
-    with LogAnalyzerResource(db_name='news') as log_analyzer:
-        log_analyzer.print_popular_article_data()
-        log_analyzer.print_popular_author_data()
-        log_analyzer.print_bad_days_data()
+with LogAnalyzerResource(db_name='news') as log_analyzer:
+    log_analyzer.print_popular_article_data()
+    log_analyzer.print_popular_author_data()
+    log_analyzer.print_bad_days_data()
 ````
 
 The DB connection will be automatically closed when the context ends.
