@@ -11,9 +11,9 @@ class LogAnalyzerResource(object):
     def __enter__(self):
         class LogAnalyzer(object):
             def __init__(self, db_name):
-                self.db_name = db_name
-                self.db_conn = self.__get_db_conn()
-                self.db_cursor = self.__get_db_cursor()
+                self.__db_name = db_name
+                self.__db_conn = self.__get_db_conn()
+                self.__db_cursor = self.__get_db_cursor()
 
             def __enter__(self):
                 return self
@@ -29,7 +29,7 @@ class LogAnalyzerResource(object):
                 :raises psycopg2.OperationalError: for db operations errors
                 '''
                 try:
-                    return psycopg2.connect('dbname={}'.format(self.db_name))
+                    return psycopg2.connect('dbname={}'.format(self.__db_name))
                 except psycopg2.OperationalError as op_err:
                     print('DB Operational error! traceback: {}'.format(
                         traceback.format_exc())
@@ -49,7 +49,7 @@ class LogAnalyzerResource(object):
                 :raises psycopg2.OperationalError: for db operations errors
                 '''
                 try:
-                    return self.db_conn.cursor()
+                    return self.__db_conn.cursor()
                 except psycopg2.OperationalError as op_err:
                     print('DB Operational error! traceback: {}'.format(
                         traceback.format_exc())
@@ -70,8 +70,8 @@ class LogAnalyzerResource(object):
                 :raises psycopg2.OperationalError: for db operations errors
                 '''
                 try:
-                    self.db_cursor.execute(query)
-                    return self.db_cursor.fetchall()
+                    self.__db_cursor.execute(query)
+                    return self.__db_cursor.fetchall()
                 except psycopg2.OperationalError as op_err:
                     print('DB Operational error! traceback: {}'.format(
                         traceback.format_exc())
@@ -91,7 +91,7 @@ class LogAnalyzerResource(object):
                 :raises psycopg2.OperationalError: for db operations errors
                 '''
                 try:
-                    self.db_conn.close()
+                    self.__db_conn.close()
                 except psycopg2.OperationalError as op_err:
                     print('DB Operational error! traceback: {}'.format(
                         traceback.format_exc())
