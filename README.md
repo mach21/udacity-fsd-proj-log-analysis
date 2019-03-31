@@ -61,3 +61,6 @@ Furthermore, directly instantiating a LogAnalyzerResource won't produce anything
 (Pdb) dir(analyzer)
 ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__enter__', '__eq__', '__exit__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'db_name']
 ````
+
+## Sample output
+[See output.txt](https://github.com/mach21/udacity-fsd-proj-log-analysis/blob/master/output.txt)
