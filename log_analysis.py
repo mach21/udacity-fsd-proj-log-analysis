@@ -177,7 +177,7 @@ class LogAnalyzerResource(object):
                 '''
                 return self.__db_exec_and_fetchall(
                     '''
-                        SELECT day, pcent
+                        SELECT TO_CHAR(day, 'Mon DD, YYYY'), pcent
                         FROM
                         (
                             SELECT
@@ -276,8 +276,7 @@ class LogAnalyzerResource(object):
                 for item in days:
                     print(
                         '"{day}" - {percent}% errors'.format(
-                            # Day format is like: July 29, 2016
-                            day=item[0].strftime('%B %d, %Y'),
+                            day=item[0],
                             # Percent format is like: 2.5% errors
                             percent=str(round(item[1], 1))
                         )
