@@ -33,7 +33,7 @@ On your host machine, [download the data here](https://d17h27t6h515a5.cloudfront
 Now go back to your VM and `cd` into the `vagrant` directory, and import the data using:
 
 ````
-user@host:~$ psql -d news -f newsdata.sql
+vagrant@vagrant:/vagrant$ psql -d news -f newsdata.sql
 ````
 
 ### How to run log_analysis.py
@@ -41,13 +41,13 @@ user@host:~$ psql -d news -f newsdata.sql
 You will run the program inside the Vagrant VM. Only python3 is supported (3.6.7 and up). Install dependencies using pip3:
 
 ````
-user@host:~$ pip3 install -r requirements.txt
+vagrant@vagrant:/vagrant$ pip3 install -r requirements.txt
 ````
 
 Then run as python script. No args required.
 
 ````
-user@host:~$ python3 log_analysis.py
+vagrant@vagrant:/vagrant$ python3 log_analysis.py
 ````
 
 ### Design
