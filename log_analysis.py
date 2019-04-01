@@ -173,7 +173,6 @@ class LogAnalyzerResource(object):
                         - sttus code in the 5xx (server err) class
 
                 :returns: list of (day, percent) tuples
-                :raises psycopg2.OperationalError: for db operations errors
                 '''
                 return self.__db_exec_and_fetchall(
                     '''

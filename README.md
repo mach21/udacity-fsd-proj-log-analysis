@@ -6,23 +6,48 @@ Simple python3 program that connects to a local _news_ DB and answers 3 question
 * Who are the most popular article authors of all time?
 * On which days did more than 1% of requests lead to errors? 
 
-### Prerequisites
-Only python3 is supported (3.6.7 and up). Install dependencies using pip3:
+### Environment Setup
 
+You'll need to install [VirtualBox5.1](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1) and [Vagrant](https://www.vagrantup.com/downloads.html).
 
-````
-pip3 install -r requirements.txt
-````
+Next, you need to set up the VM. You can download and unzip this file: [FSND-Virtual-Machine.zip](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acfbfa3_fsnd-virtual-machine/fsnd-virtual-machine.zip) This will give you a directory called `FSND-Virtual-Machine`.
 
-The _news_ PostgreSQL database needs to be installed and populated.
+Open a terminal (GitBash works well on Windows, or whatever term you prefer on Linux/OSX) and `cd` to `FSND-Virtual-Machine/vagrant`.
 
-Please refer to _Project: Logs Analysis -> Section 3 (Prepare the software and data)_ for instructions.
-
-### How to run
-Run as python script inside the Vagrant VM where your _news_ DB lives. No args required.
+Bring up the VM with:
 
 ````
-user@host:~$ python3 log_analysis.py
+user@host:~$ vagrant up
+````
+
+And log in to it with:
+
+````
+user@host:~$ vagrant ssh
+````
+
+You VM should be up and running now. Time to populate the DB with data. 
+
+On your host machine, [download the data here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip). You will need to unzip this file after downloading it. The file inside is called `newsdata.sql`. Put this file into the `vagrant` directory, which is shared with your virtual machine. While you're here, put [log_analysis.py](https://github.com/mach21/udacity-fsd-proj-log-analysis/blob/master/log_analysis.py) and [requirements.txt](https://github.com/mach21/udacity-fsd-proj-log-analysis/blob/master/requirements.txt) into the vagrant directory, so you can run the program from the VM.
+
+Now go back to your VM and `cd` into the `vagrant` directory, and import the data using:
+
+````
+vagrant@vagrant:/vagrant$ psql -d news -f newsdata.sql
+````
+
+### How to run log_analysis.py
+
+You will run the program inside the Vagrant VM. Only python3 is supported (3.6.7 and up). Install dependencies using pip3:
+
+````
+vagrant@vagrant:/vagrant$ pip3 install -r requirements.txt
+````
+
+Then run as python script. No args required.
+
+````
+vagrant@vagrant:/vagrant$ python3 log_analysis.py
 ````
 
 ### Design
