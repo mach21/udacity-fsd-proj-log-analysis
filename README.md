@@ -8,11 +8,11 @@ Simple python3 program that connects to a local _news_ DB and answers 3 question
 
 ### Environment Setup
 
-You'll need to install [VirtualBox5.1](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1) and [Vagrant](https://www.vagrantup.com/downloads.html)
+You'll need to install [VirtualBox5.1](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1) and [Vagrant](https://www.vagrantup.com/downloads.html).
 
 Next, you need to set up the VM. You can download and unzip this file: [FSND-Virtual-Machine.zip](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acfbfa3_fsnd-virtual-machine/fsnd-virtual-machine.zip) This will give you a directory called `FSND-Virtual-Machine`.
 
-Open a terminal (GitBash works well on Windows, or whatever term you prefer on Linux/OSX) and `cd` to `FSND-Virtual-Machine/vagrant`
+Open a terminal (GitBash works well on Windows, or whatever term you prefer on Linux/OSX) and `cd` to `FSND-Virtual-Machine/vagrant`.
 
 Bring up the VM with:
 
@@ -28,7 +28,7 @@ user@host:~$ vagrant ssh
 
 You VM should be up and running now. Time to populate the DB with data. 
 
-On your host machine, [download the data here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip). You will need to unzip this file after downloading it. The file inside is called `newsdata.sql`. Put this file into the `vagrant` directory, which is shared with your virtual machine. While you're here, put [log_analysis.py](https://github.com/mach21/udacity-fsd-proj-log-analysis/blob/master/log_analysis.py) into the vagrant directory, so you can run it from the VM.
+On your host machine, [download the data here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip). You will need to unzip this file after downloading it. The file inside is called `newsdata.sql`. Put this file into the `vagrant` directory, which is shared with your virtual machine. While you're here, put [log_analysis.py](https://github.com/mach21/udacity-fsd-proj-log-analysis/blob/master/log_analysis.py) and [requirements.txt](https://github.com/mach21/udacity-fsd-proj-log-analysis/blob/master/requirements.txt) into the vagrant directory, so you can run the program from the VM.
 
 Now go back to your VM and `cd` into the `vagrant` directory, and import the data using:
 
